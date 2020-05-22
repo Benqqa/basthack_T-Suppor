@@ -43,8 +43,6 @@
     'allow_all'=>true,      //Доступно всем?  
     'token'=>'eb71f0053b1e614f448505f92baede3f3f96ef1e45bd7bb54dc2df572d07921092e566b9b2ff49d553ff'//Ключ для взаимодействия с api //Токен  
     );
-## [Панель управления](https://besthack.newpage.xyz/admin) 
- Панель управления полностью работает, но не доделан графический интефейс
- 
+
 ## [API для ajax](https://besthack.newpage.xyz/ajax_test)
 Для тестирования
