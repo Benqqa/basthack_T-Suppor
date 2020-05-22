@@ -1,0 +1,120 @@
+CREATE DATABASE `support_db`;
+ALTER DATABASE `support_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE USER 'support'@'localhost' IDENTIFIED BY 'You_Shall_Not_Pass_0_o';
+GRANT ALL PRIVILEGES ON `support_db`.* TO 'support'@'localhost';
+
+USE support_db
+
+CREATE TABLE `users` (
+    id          INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    value       INT(2),
+    image       VARCHAR(255),
+    name        VARCHAR(255),
+    surname     VARCHAR(255),
+    email       VARCHAR(255),
+    patronymic  VARCHAR(255),
+    phone       VARCHAR(20),
+    password    VARCHAR(64),
+    vk_id VARCHAR(64)
+);
+
+CREATE TABLE `supports`(
+    id          INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id     INT,
+    types       INT,
+    last_online TIMESTAMP
+);
+    
+CREATE TABLE `admins`(
+    id          INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id     INT,
+    last_online TIMESTAMP
+);
+
+CREATE TABLE `task`(
+    id              INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title           VARCHAR(255),
+    subject         INT,
+    create_date     TIMESTAMP,
+    user_id         INT,
+    suport_id       INT,
+    status          INT,
+    type            INT,
+    data            LONGTEXT,
+    img             VARCHAR(255),
+    is_email        TINYINT(1),
+    is_vk           TINYINT(1)
+);    
+
+CREATE TABLE `connections` (
+    id      INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    session VARCHAR(64),
+    token   VARCHAR(64)
+);
+
+CREATE TABLE `confirmations` (
+    id      INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    email   VARCHAR(255),
+    value   INT(2),
+    token   VARCHAR(64)
+);
+
+CREATE TABLE `subjects`(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name varchar(255),
+    priority int(1)
+);
+
+INSERT INTO `subjects` SET name="Can't access https://www.example.com", priority=7 ;
+INSERT INTO `subjects` SET name='trouble with Debian', priority=8 ;
+INSERT INTO `subjects` SET name='trouble with support', priority=9 ;
+
+CREATE TABLE `devices`(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title        VARCHAR(255),
+    image        VARCHAR(255),
+    data         LONGTEXT,
+    start_date   TIMESTAMP,
+    end_date     TIMESTAMP,
+    is_end       TINYINT(1),
+    coast        INT,
+    owner_id     INT,
+    serial       VARCHAR(255),
+    type         INT
+);
+
+CREATE TABLE `types`(
+    id      INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    text    LONGTEXT,
+    name    varchar(255),
+    img    varchar(255)
+);
+
+CREATE TABLE `messages` (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  message_id int(11) NOT NULL,
+  date int(11) NOT NULL
+);
+
+CREATE TABLE `command` (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  input VARCHAR(255),
+  output LONGTEXT,
+  FULLTEXT (input,output)
+);
+CREATE TABLE `faq` (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  text LONGTEXT,
+  FULLTEXT (text)
+);
+
+
+
+CREATE TABLE `chat_example`(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    owner_id INT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data LONGTEXT
+);
