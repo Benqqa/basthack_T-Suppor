@@ -20,7 +20,7 @@
                             <i class="fas fa-envelope "></i>
                           </span>
                             <span class="icon is-small is-left ">
-                                <img src="user.jpg " class="is-rounded ">
+                               
                           </span>
                         </p>
                     </div>
@@ -28,7 +28,7 @@
                         <p class="control has-icons-left ">
                             <input class="input " type="password" placeholder="Password" id='password' name='password' placeholder="Password ">
                             <span class="icon is-small is-left ">
-                                <img src="user.jpg " class="is-rounded ">
+                               
                           </span>
                         </p>
                     </div>
